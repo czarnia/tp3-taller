@@ -32,15 +32,19 @@ Conexion_cliente::~Conexion_cliente(){
 
 void Conexion_cliente::ejecutar(){
   char buffer[MAX_TAM_BUFFER];
-  (*skt).receive(buffer, MAX_TAM_BUFFER, FIN_BUFFER, TAM_FIN);
+  if((*skt).receive(buffer, MAX_TAM_BUFFER, FIN_BUFFER, TAM_FIN) < 0){
+      std::cout << "-1 al recibir \n";
+  }
   while (strcmp(buffer, FIN_ENTRADA) != 0){
     if (strcmp(buffer, EN_ESPERA) != 0){
-      std::cout << "Recibi (en el while) " << buffer;
+      std::cout << "Recibi (en el while) " << buffer << "\n";
       server.agregar_temperatura(buffer);
     }
     strncpy(buffer, EN_ESPERA, MAX_TAM_BUFFER);
     //std::cout << "Recibi (en el while 2) " << buffer << "\n";
-    (*skt).receive(buffer, MAX_TAM_BUFFER, FIN_BUFFER, TAM_FIN);
+    if((*skt).receive(buffer, MAX_TAM_BUFFER, FIN_BUFFER, TAM_FIN) < 0){
+        std::cout << "-1 al recibir \n";
+    }
     //std::cout << "Recibi (en el while 3) " << buffer << "\n";
   }
   std::cout << "Recibi (fuera while) " << buffer << "\n";
