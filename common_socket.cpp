@@ -106,10 +106,12 @@ size_t tam_fin){
     if (buffer[tam_actual-1] == '\n'){
       std::cout << "Buffer(rcv): " << buffer << "\n";
       buffer[tam_actual-1] = '\0';
+      std::cout << "tam: " << tam_actual << "\n";
       return tam_actual;
     }
   }
   buffer[tam_actual-1] = '\0';
+  std::cout << "tam: " << tam_actual << "\n";
   return tam_actual;
 }
 

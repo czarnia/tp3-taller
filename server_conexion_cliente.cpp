@@ -9,7 +9,7 @@
 #include <iostream>
 //#include <queue>
 
-#define FIN_ENTRADA "End\n"
+#define FIN_ENTRADA "End"
 #define EN_ESPERA " "
 #define FIN_BUFFER '\n'
 #define TAM_FIN 1
