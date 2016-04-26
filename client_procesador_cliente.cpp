@@ -25,14 +25,14 @@ Registro Procesador_cliente::devolver_clave_valor(std::string cadena){
   return clave_valor;
 }
 
-void Procesador_cliente::enviar_clave_valor(Registro kv, Socket skt){
+void Procesador_cliente::enviar_clave_valor(Registro kv, Socket& skt){
   const char* registro_env = (kv.to_string()).c_str();
   //std::cout << "Envio: " << registro_env << "\n";
   skt.send(registro_env, strlen(registro_env));
   skt.send(FIN_SEND, strlen(FIN_SEND));
 }
 
-void Procesador_cliente::enviar_fin(Socket skt){
+void Procesador_cliente::enviar_fin(Socket& skt){
   //std::cout << "Envio: " << FIN << "\n";
   skt.send(FIN, strlen(FIN));
 }

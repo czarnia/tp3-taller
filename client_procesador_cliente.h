@@ -8,8 +8,8 @@
 class Procesador_cliente{
   public:
     Registro devolver_clave_valor(std::string cadena);
-    void enviar_clave_valor(Registro kv, Socket skt);
-    void enviar_fin(Socket skt);
+    void enviar_clave_valor(Registro kv, Socket& skt);
+    void enviar_fin(Socket& skt);
 };
 
 #endif //PROCESADOR_CLIENTE
