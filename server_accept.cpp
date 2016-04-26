@@ -33,7 +33,7 @@ void Accept::ejecutar(){
       return;
     }
     Socket* aceptado = new Socket(NULL, NULL, nuevo_skt);
-    Conexion_cliente* nueva_conexion = new Conexion_cliente(aceptado, *server);
+    Conexion_cliente* nueva_conexion = new Conexion_cliente(aceptado, server);
     (*server).agregar_cliente(nueva_conexion);
   }
 }

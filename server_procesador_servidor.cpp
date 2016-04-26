@@ -19,19 +19,11 @@ Procesador_servidor::Procesador_servidor(){
 }
 
 Procesador_servidor::~Procesador_servidor(){
-  //std::map<int,Reduce*> hilos_reduce = reducers.devolver_hilos();
-
-  /*std::vector<int> claves_reduce = obtener_claves(hilos_reduce);
-  for (size_t i = 0; i < claves_reduce.size(); i++){
-    Reduce* r = hilos_reduce[claves_reduce[i]];
-    hilos_reduce.erase(claves_reduce[i]);
-    delete r;
-  }*/
   size_t tam_clientes = clientes.size();
   for (size_t i = 0 ; i < tam_clientes; i++){
-    //Conexion_cliente* cliente = clientes.back();
+    Conexion_cliente* cliente = clientes.back();
     clientes.pop_back();
-    //delete cliente;
+    delete cliente;
   }
   delete reducers;
 }
@@ -45,22 +37,6 @@ void Procesador_servidor::agregar_cliente(Conexion_cliente* cliente){
 }
 
 void Procesador_servidor::agregar_temperatura(char* cadena){
-  //std::cout << "Agrego una temperatura! \n";
-  /*std::istringstream cadena_parseada(cadena);
-  std::string ciudad, temperatura, dia;
-
-  cadena_parseada >> dia >> ciudad >> temperatura;
-  int temp = atoi(temperatura.c_str());
-  int d = atoi(dia.c_str());
-
-  Registro clave_valor = Registro(ciudad, temp, d);
-
-  if (hilos_reduce[d] == NULL){
-    std::cout << "agrego un reduce \n";
-    hilos_reduce[d] =  new Reduce();
-  }
-  (*hilos_reduce[d]).agregar_registro(clave_valor);
-  std::cout << "Cant de hilos: (agregar)" << hilos_reduce.size() << "\n";*/
   (*reducers).agregar_temperatura(cadena);
 }
 
@@ -94,12 +70,6 @@ void Procesador_servidor::imprimir_resultados(){
   //std::cout << "Cant de hilos (imprimir): " << hilos_reduce.size() << "\n";
   Salida_maximos salida = Salida_maximos();
   std::map<int,Reduce*>::iterator i;
-  /*for (i = hilos_reduce.begin(); i != hilos_reduce.end(); i++){
-    (*(i->second)).start();
-  }
-  for (i = hilos_reduce.begin(); i != hilos_reduce.end(); i++){
-    (*(i->second)).join();
-  }*/
   for (i = hilos_reduce.begin(); i != hilos_reduce.end(); i++){
     std::vector<Registro> maximos_dia = (*(i->second)).devolver_maximos();
     std::cout << salida.to_string(maximos_dia);

@@ -12,9 +12,9 @@ class Conexion_cliente : public Hilo{
   private:
     Socket* skt;
     bool fin;
-    Procesador_servidor server;
+    Procesador_servidor* server;
   public:
-    Conexion_cliente(Socket* conexion, Procesador_servidor& srv);
+    Conexion_cliente(Socket* conexion, Procesador_servidor* srv);
     ~Conexion_cliente();
     void ejecutar();
     bool termino();

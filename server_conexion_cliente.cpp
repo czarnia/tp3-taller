@@ -18,7 +18,7 @@
 //"Llanfairpwllgwyngyllgogerychwyrndrobwllllantysiliogogogoch" cuyo nombre tiene
 //59 caracteres.
 
-Conexion_cliente::Conexion_cliente(Socket* conexion, Procesador_servidor& srv)
+Conexion_cliente::Conexion_cliente(Socket* conexion, Procesador_servidor* srv)
 :skt(conexion){
   //std::priority_queue temperaturas;
   server = srv;
@@ -26,7 +26,6 @@ Conexion_cliente::Conexion_cliente(Socket* conexion, Procesador_servidor& srv)
 }
 
 Conexion_cliente::~Conexion_cliente(){
-  (*skt).shutdown(SHUT_RDWR);
   delete skt;
 }
 
@@ -38,7 +37,7 @@ void Conexion_cliente::ejecutar(){
   while (strcmp(buffer, FIN_ENTRADA) != 0){
     if (strcmp(buffer, EN_ESPERA) != 0){
       //std::cout << "Recibi (en el while) " << buffer << "\n";
-      server.agregar_temperatura(buffer);
+      (*server).agregar_temperatura(buffer);
     }
     strncpy(buffer, EN_ESPERA, MAX_TAM_BUFFER);
     //std::cout << "Recibi (en el while 2) " << buffer << "\n";
