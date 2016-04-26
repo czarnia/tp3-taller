@@ -4,9 +4,6 @@
 #include "server_hilo.h"
 #include "common_socket.h"
 #include "server_procesador_servidor.h"
-//#include <queue>
-
-//class Proceso_servidor;
 
 class Conexion_cliente : public Hilo{
   private:

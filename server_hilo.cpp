@@ -6,10 +6,7 @@
 #include <iostream>
 
 void Hilo::start() {
-    if (pthread_create(&hilo, NULL, Hilo::ejecutor, this) == 0){
-      //std::cout << "uya, 0 \n";
-    }
-    //std::cout << "Entro al start \n";
+  pthread_create(&hilo, NULL, Hilo::ejecutor, this);
 }
 
 void Hilo::join() {

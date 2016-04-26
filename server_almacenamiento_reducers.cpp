@@ -44,7 +44,6 @@ void Almacenamiento_reducers::agregar_temperatura(char* cadena){
 
   Lock candado(proteccion);
   if (hilos_reduce[d] == NULL){
-    //std::cout << "agrego un reduce \n";
     hilos_reduce[d] = new Reduce();
   }
   (*hilos_reduce[d]).agregar_registro(clave_valor);
@@ -56,16 +55,10 @@ std::map<int, Reduce*> Almacenamiento_reducers::devolver_hilos(){
 
 void Almacenamiento_reducers::ejecutar_reduce(){
   std::map<int,Reduce*>::iterator i;
-  //std::cout << "Cant hilos: " << hilos_reduce.size();
-  // << "holi \n";
   for (i = hilos_reduce.begin(); i != hilos_reduce.end(); i++){
-    //std::cout << hilos_reduce.size() <<"holi (2)\n";
     (*(i->second)).start();
-    //std::cout << hilos_reduce.size() <<"holi (2-1)\n";
   }
   for (i = hilos_reduce.begin(); i != hilos_reduce.end(); i++){
-    //std::cout << hilos_reduce.size() << "holi (3)\n";
     (*(i->second)).join();
   }
-  //std::cout << "holi (4)\n";
 }

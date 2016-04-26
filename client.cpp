@@ -17,7 +17,6 @@ int main(int argc, char *argv[]){
   Procesador_cliente procesador = Procesador_cliente();
   char* id = argv[1];
   char* puerto = argv[2];
-  //std::cout << id << " " << puerto << "\n";
   Socket* cliente = new Socket(NULL, puerto);
 
   //Me conecto al servidor
@@ -27,8 +26,6 @@ int main(int argc, char *argv[]){
     return 0;
   }
 
-  /*cliente.send("Hola \n", strlen("Hola \n"));
-  cliente.send("Chau \n", strlen("Chau \n"));*/
   std::string linea_actual;
 
   while (std::getline(std::cin,linea_actual) && linea_actual != ""){

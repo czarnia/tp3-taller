@@ -42,5 +42,6 @@ bool Registro::operator!=(const Registro& otro) const{
 std::string Registro::to_string(){
   std::stringstream ss;
   ss << dia << " " << ciudad << " " << temperatura;
-  return ss.str();
+  std::string str = ss.str();
+  return str;
 }

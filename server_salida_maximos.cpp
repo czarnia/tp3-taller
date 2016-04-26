@@ -25,10 +25,6 @@ std::string Salida_maximos::to_string(std::vector<Registro> maximos){
     }
     ss << *i;
   }
-
-  /*for (size_t i = 0; i < maximos.size(); i++){
-    ss << maximos[i].get_ciudad() << " ";
-  }*/
   ss << " (" << maximos[0].get_temperatura() << ")\n";
   return ss.str();
 }

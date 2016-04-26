@@ -43,20 +43,12 @@ int Socket::listen(int conexiones){
 }
 
 
-int Socket::bind(char* ip, char* puerto)
-/*(struct sockaddr* direccion, int tamanio)*/{
+int Socket::bind(char* ip, char* puerto){
   struct addrinfo* addr = iniciar_addrinfo(ip, puerto);
   int b = ::bind(this->skt, addr->ai_addr, addr->ai_addrlen);
   freeaddrinfo(addr);
   return b;
 }
-
-
-/*Socket* Socket::accept(struct sockaddr* dir_cliente){
-  socklen_t tam_addr = sizeof(dir_cliente);
-  int nuevo_socket = ::accept(this->skt, dir_cliente, &tam_addr);
-  return new Socket(NULL, NULL, nuevo_socket);
-}*/
 
 int Socket::accept(struct sockaddr* dir_cliente){
   socklen_t tam_addr = sizeof(dir_cliente);
@@ -82,16 +74,12 @@ size_t tam_fin){
       return -1;
     }
     tam_actual += tam_rcv;
-    //std::cout << "Recibido " << buffer << "\n";
     if (buffer[tam_actual-1] == '\n'){
-      //std::cout << "Buffer(rcv): " << buffer << "\n";
       buffer[tam_actual-1] = '\0';
-      //std::cout << "tam: " << tam_actual << "\n";
       return tam_actual;
     }
   }
   buffer[tam_actual-1] = '\0';
-  //std::cout << "tam: " << tam_actual << "\n";
   return tam_actual;
 }
 
@@ -113,7 +101,6 @@ int Socket::rcv(char* buffer, size_t tamanio){
 
 
 int Socket::send(const char* buffer, size_t tamanio){
-  //std::cout << "Envio un: " << buffer;
   size_t tam_actual = 0; //el tamaño total de lo que ya envié.
   int tam_send = 0; //el tamaño de lo que envio en cada ciclo.
 
@@ -132,7 +119,6 @@ int Socket::send(const char* buffer, size_t tamanio){
 struct addrinfo* Socket::iniciar_addrinfo(char* ip, char* puerto){
   struct addrinfo hints;
   struct addrinfo* server;
-  // = (struct addrinfo*) malloc(sizeof(struct addrinfo));
 
   memset(&hints, 0, sizeof(struct addrinfo));
   hints.ai_family = AF_INET;
