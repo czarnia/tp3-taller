@@ -17,8 +17,8 @@ Accept::Accept(Socket* conexion_server, Procesador_servidor* srv)
 }
 
 Accept::~Accept(){
-  //delete skt;
-  //delete server;
+  delete skt;
+  delete server;
 }
 
 void Accept::terminar(){

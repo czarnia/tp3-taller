@@ -26,8 +26,8 @@ Conexion_cliente::Conexion_cliente(Socket* conexion, Procesador_servidor& srv)
 }
 
 Conexion_cliente::~Conexion_cliente(){
-  //(*skt).shutdown(SHUT_RDWR);
-  //delete skt;
+  (*skt).shutdown(SHUT_RDWR);
+  delete skt;
 }
 
 void Conexion_cliente::ejecutar(){

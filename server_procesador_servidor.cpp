@@ -33,8 +33,7 @@ Procesador_servidor::~Procesador_servidor(){
     clientes.pop_back();
     //delete cliente;
   }
-  //std::cout << "Borro? \n";
-  //delete reducers;
+  delete reducers;
 }
 
 void Procesador_servidor::agregar_cliente(Conexion_cliente* cliente){

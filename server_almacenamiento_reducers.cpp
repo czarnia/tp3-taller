@@ -26,9 +26,9 @@ Almacenamiento_reducers::Almacenamiento_reducers(){
 Almacenamiento_reducers::~Almacenamiento_reducers(){
   std::vector<int> claves_reduce = obtener_claves(hilos_reduce);
   for (size_t i = 0; i < claves_reduce.size(); i++){
-    //Reduce* r = hilos_reduce[claves_reduce[i]];
+    Reduce* r = hilos_reduce[claves_reduce[i]];
     hilos_reduce.erase(claves_reduce[i]);
-    //delete r;
+    delete r;
   }
 }
 
