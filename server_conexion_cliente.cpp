@@ -50,7 +50,7 @@ void Conexion_cliente::ejecutar(){
   //std::cout << "Recibi (fuera while) " << buffer << "\n";
   (*skt).shutdown(SHUT_RDWR);
   fin = true;
-  std::cout << "termine \n";
+  //std::cout << "termine \n";
   return;
 }
 

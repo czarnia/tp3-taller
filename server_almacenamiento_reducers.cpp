@@ -56,7 +56,7 @@ std::map<int, Reduce*> Almacenamiento_reducers::devolver_hilos(){
 
 void Almacenamiento_reducers::ejecutar_reduce(){
   std::map<int,Reduce*>::iterator i;
-  std::cout << "Cant hilos: " << hilos_reduce.size();
+  //std::cout << "Cant hilos: " << hilos_reduce.size();
   // << "holi \n";
   for (i = hilos_reduce.begin(); i != hilos_reduce.end(); i++){
     //std::cout << hilos_reduce.size() <<"holi (2)\n";

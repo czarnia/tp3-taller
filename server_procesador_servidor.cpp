@@ -82,7 +82,7 @@ void Procesador_servidor::join(){
   while (!terminaron){
     terminaron = clientes_terminaron();
   }
-  std::cout << "los clientes terminaron \n";
+  //std::cout << "los clientes terminaron \n";
   for (size_t i = 0; i < clientes.size(); i++){
     (*clientes[i]).join();
   }
@@ -92,7 +92,7 @@ void Procesador_servidor::join(){
 
 void Procesador_servidor::imprimir_resultados(){
   std::map<int,Reduce*> hilos_reduce = (*reducers).devolver_hilos();
-  std::cout << "Cant de hilos (imprimir): " << hilos_reduce.size() << "\n";
+  //std::cout << "Cant de hilos (imprimir): " << hilos_reduce.size() << "\n";
   Salida_maximos salida = Salida_maximos();
   std::map<int,Reduce*>::iterator i;
   /*for (i = hilos_reduce.begin(); i != hilos_reduce.end(); i++){
