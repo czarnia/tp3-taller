@@ -40,14 +40,14 @@ void Almacenamiento_reducers::agregar_temperatura(char* cadena){
   int temp = atoi(temperatura.c_str());
   int d = atoi(dia.c_str());
 
-  Registro* clave_valor = new Registro(ciudad, temp, d);
+  Registro clave_valor = Registro(ciudad, temp, d);
 
   Lock candado(proteccion);
   if (hilos_reduce[d] == NULL){
     //std::cout << "agrego un reduce \n";
-    hilos_reduce[d] =  new Reduce();
+    hilos_reduce[d] = new Reduce();
   }
-  (*hilos_reduce[d]).agregar_registro(*clave_valor);
+  (*hilos_reduce[d]).agregar_registro(clave_valor);
 }
 
 std::map<int, Reduce*> Almacenamiento_reducers::devolver_hilos(){
