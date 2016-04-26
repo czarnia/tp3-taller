@@ -38,6 +38,7 @@ int main(int argc, char *argv[]){
   }
   procesador.enviar_fin(*cliente);
 
-  //delete cliente;
+  (*cliente).shutdown(SHUT_RDWR);
+  delete cliente;
   return 0;
 }

@@ -28,7 +28,8 @@ Registro Procesador_cliente::devolver_clave_valor(std::string cadena){
 void Procesador_cliente::enviar_clave_valor(Registro kv, Socket& skt){
   const char* registro_env = (kv.to_string()).c_str();
   //std::cout << "Envio: " << registro_env << "\n";
-  skt.send(registro_env, strlen(registro_env));
+  size_t tam = kv.to_string().size();//strlen(registro_env);
+  skt.send(registro_env, tam);
   skt.send(FIN_SEND, strlen(FIN_SEND));
 }
 

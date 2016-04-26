@@ -28,7 +28,6 @@ Socket::Socket(char* puerto, char* ip, int sktc){
 }
 
 Socket::~Socket(){
-  //(*this).shutdown(SHUT_RDWR);
   close(this->skt);
 }
 
@@ -43,18 +42,13 @@ int Socket::listen(int conexiones){
 }
 
 
-int Socket::bind(char* ip, char* puerto)
-/*(struct sockaddr* direccion, int tamanio)*/{
+int Socket::bind(char* ip, char* puerto){
   struct addrinfo* addr = iniciar_addrinfo(ip, puerto);
-  return ::bind(this->skt, addr->ai_addr, addr->ai_addrlen);
+  int b = ::bind(this->skt, addr->ai_addr, addr->ai_addrlen);
+  return b;
 }
 
 
-/*Socket* Socket::accept(struct sockaddr* dir_cliente){
-  socklen_t tam_addr = sizeof(dir_cliente);
-  int nuevo_socket = ::accept(this->skt, dir_cliente, &tam_addr);
-  return new Socket(NULL, NULL, nuevo_socket);
-}*/
 
 int Socket::accept(struct sockaddr* dir_cliente){
   socklen_t tam_addr = sizeof(dir_cliente);
@@ -64,32 +58,10 @@ int Socket::accept(struct sockaddr* dir_cliente){
 
 int Socket::conect(char* ip, char* puerto){
   struct addrinfo* server = iniciar_addrinfo(ip, puerto);
-  return ::connect(this->skt, server->ai_addr, server->ai_addrlen);
+  int c = ::connect(this->skt, server->ai_addr, server->ai_addrlen);
+  return c;
 }
 
-/*int Socket::receive(char* buffer, size_t tam_max, const char* fin_buffer,
-size_t tam_fin){
-  size_t tam_actual = 0; //el tamaño total de lo que ya recibí.
-  int tam_rcv = 0; //el tamaño de lo que recibo en cada ciclo.
-  const char* fin_actual = "";
-
-  std::cout << "Recibo \n";
-  while ((strcmp(fin_actual, fin_buffer) != 0) || (tam_actual < tam_max)){
-    std::cout << "Fin actual(1): " << fin_actual;
-    int dif_tam = tam_max-tam_actual;
-    tam_rcv = ::recv(this->skt, &buffer[tam_actual], dif_tam, MSG_NOSIGNAL);
-    if (tam_rcv <= 0){
-      std::cout << "Uya, no recibi!"<< "\n";
-      return -1;
-    }
-    tam_actual += tam_rcv;
-    fin_actual = buffer + (tam_actual -  tam_fin);
-    //std::cout << "Buffer(rcv): " << buffer << "\n";
-    std::cout << "Fin actual(2): " << fin_actual;
-  }
-  std::cout << "Buffer(rcv): " << buffer << "\n";
-  return tam_actual;
-}*/
 
 int Socket::receive(char* buffer, size_t tam_max, const char fin_buffer,
 size_t tam_fin){
