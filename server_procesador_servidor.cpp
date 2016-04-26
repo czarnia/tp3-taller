@@ -15,7 +15,7 @@
 
 Procesador_servidor::Procesador_servidor(){
   std::vector<Conexion_cliente*> clientes;
-  Almacenamiento_reducers reducers = Almacenamiento_reducers();
+  reducers = new Almacenamiento_reducers();
 }
 
 Procesador_servidor::~Procesador_servidor(){
@@ -34,6 +34,7 @@ Procesador_servidor::~Procesador_servidor(){
     delete cliente;
   }
   //std::cout << "Borro? \n";
+  delete reducers;
 }
 
 void Procesador_servidor::agregar_cliente(Conexion_cliente* cliente){
@@ -61,7 +62,7 @@ void Procesador_servidor::agregar_temperatura(char* cadena){
   }
   (*hilos_reduce[d]).agregar_registro(clave_valor);
   std::cout << "Cant de hilos: (agregar)" << hilos_reduce.size() << "\n";*/
-  reducers.agregar_temperatura(cadena);
+  (*reducers).agregar_temperatura(cadena);
 }
 
 bool Procesador_servidor::clientes_terminaron(){
@@ -85,12 +86,12 @@ void Procesador_servidor::join(){
   for (size_t i = 0; i < clientes.size(); i++){
     (*clientes[i]).join();
   }
-  reducers.ejecutar_reduce();
+  (*reducers).ejecutar_reduce();
   return;
 }
 
 void Procesador_servidor::imprimir_resultados(){
-  std::map<int,Reduce*> hilos_reduce = reducers.devolver_hilos();
+  std::map<int,Reduce*> hilos_reduce = (*reducers).devolver_hilos();
   std::cout << "Cant de hilos (imprimir): " << hilos_reduce.size() << "\n";
   Salida_maximos salida = Salida_maximos();
   std::map<int,Reduce*>::iterator i;

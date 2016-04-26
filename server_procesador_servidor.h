@@ -13,7 +13,7 @@ class Conexion_cliente;
 class Procesador_servidor{
   private:
     std::vector<Conexion_cliente*> clientes;
-    Almacenamiento_reducers reducers;
+    Almacenamiento_reducers* reducers;
 
   public:
     Procesador_servidor();

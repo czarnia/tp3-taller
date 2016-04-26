@@ -13,6 +13,7 @@ void Hilo::start() {
 }
 
 void Hilo::join() {
-    //std::cout << "Hago join! \n";
+    std::cout << "Hago join! \n";
     pthread_join(hilo, NULL);
+    std::cout << "akakal \n";
 }

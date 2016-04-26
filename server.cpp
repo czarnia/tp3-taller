@@ -43,14 +43,14 @@ int main(int argc, char *argv[]){
   Accept* aceptador = new Accept(*conexion, *server);
   (*aceptador).start();
 
-  //std::cout <<"Cree y lanze el aceptado \n";
+  std::cout <<"Cree y lanze el aceptado \n";
 
   std::getline(std::cin,linea_actual);
   std::cout << "Estoy en el while, mi línea es(0): " << linea_actual << "\n";
   while (linea_actual.compare("q") != 0){
     std::cout << "Estoy en el while, mi línea es(1): " << linea_actual << "\n";
     std::getline(std::cin,linea_actual);
-    //std::cout << "Estoy en el while, mi línea es(2): " << linea_actual << "\n";
+    std::cout << "Estoy en el while, mi línea es(2): " << linea_actual << "\n";
   }
 
   std::cout << "Salgo del while \n";
@@ -58,13 +58,13 @@ int main(int argc, char *argv[]){
   (*aceptador).terminar();
   (*aceptador).join();
   (*server).join();
-  (*server).imprimir_resultados();
+  //(*server).imprimir_resultados();
 
-  //std::cout << "joinie \n";
+  std::cout << "joinie \n";
 
   //delete aceptador;
   delete conexion;
-  delete server;
+  //delete server;
 
   return 0;
 }
