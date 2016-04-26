@@ -25,22 +25,7 @@ int main(int argc, char *argv[]){
   (*conexion).bind(NULL, puerto);
   (*conexion).listen(MAX_CONEXIONES);
 
-  /*int nuevo_skt = (*conexion).accept(NULL);
-  if(nuevo_skt < 0){
-    return -1;
-  }
-  Socket* aceptado = new Socket(NULL, NULL, nuevo_skt);
-
-  char buffer[10];
-
-  (*aceptado).receive(buffer, 10, '\n', 1);
-  std::cout << "Recibi: " << buffer << "fin \n";
-  strncpy(buffer, "", 10);
-  (*aceptado).receive(buffer, 10, '\n', 1);
-  std::cout << "Recibi(2): " << buffer << "fin(2) \n";
-  */
-
-  Accept* aceptador = new Accept(*conexion, *server);
+  Accept* aceptador = new Accept(conexion, server);
   (*aceptador).start();
 
   //std::cout <<"Cree y lanze el aceptado \n";
@@ -62,7 +47,7 @@ int main(int argc, char *argv[]){
 
   //std::cout << "joinie \n";
 
-  //delete aceptador;
+  delete aceptador;
   //delete conexion;
   //delete server;
 

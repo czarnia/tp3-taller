@@ -19,11 +19,14 @@
 #include <iostream>
 
 Socket::Socket(char* puerto, char* ip, int sktc){
+  mi_addr = iniciar_addrinfo(ip, puerto);
   if (sktc > 0){
     this->skt = sktc;
   }else{
-    struct addrinfo* addr = iniciar_addrinfo(ip, puerto);
-    this->skt = socket(addr->ai_family, addr->ai_socktype, addr->ai_protocol);
+    this->skt = socket(mi_addr->ai_family, mi_addr->ai_socktype, mi_addr->ai_protocol);
+    if (this->skt < 0){
+      std::cout << "no cree nada \n";
+    }
   }
 }
 
@@ -43,8 +46,8 @@ int Socket::listen(int conexiones){
 
 
 int Socket::bind(char* ip, char* puerto){
-  struct addrinfo* addr = iniciar_addrinfo(ip, puerto);
-  int b = ::bind(this->skt, addr->ai_addr, addr->ai_addrlen);
+  //struct addrinfo* addr = iniciar_addrinfo(ip, puerto);
+  int b = ::bind(this->skt, mi_addr->ai_addr, mi_addr->ai_addrlen);
   return b;
 }
 
@@ -57,8 +60,8 @@ int Socket::accept(struct sockaddr* dir_cliente){
 }
 
 int Socket::conect(char* ip, char* puerto){
-  struct addrinfo* server = iniciar_addrinfo(ip, puerto);
-  int c = ::connect(this->skt, server->ai_addr, server->ai_addrlen);
+  addr_conect = iniciar_addrinfo(ip, puerto);
+  int c = ::connect(this->skt, addr_conect->ai_addr, addr_conect->ai_addrlen);
   return c;
 }
 

@@ -9,11 +9,11 @@
 
 class Accept: public Hilo{
   private:
-    Socket skt;
+    Socket* skt;
     bool fin;
-    Procesador_servidor server;
+    Procesador_servidor* server;
   public:
-    Accept(Socket& conexion_server, Procesador_servidor& svr);
+    Accept(Socket* conexion_server, Procesador_servidor* svr);
     ~Accept();
     void terminar();
     virtual void ejecutar();

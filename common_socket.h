@@ -11,6 +11,8 @@
 class Socket{
   private:
     int skt;
+    struct addrinfo* mi_addr;
+    struct addrinfo* addr_conect;
   public:
     Socket(char* puerto, char* ip, int sktc = -1);
     ~Socket();
