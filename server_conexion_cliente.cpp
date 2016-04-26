@@ -37,7 +37,7 @@ void Conexion_cliente::ejecutar(){
   }
   while (strcmp(buffer, FIN_ENTRADA) != 0){
     if (strcmp(buffer, EN_ESPERA) != 0){
-      std::cout << "Recibi (en el while) " << buffer << "\n";
+      //std::cout << "Recibi (en el while) " << buffer << "\n";
       server.agregar_temperatura(buffer);
     }
     strncpy(buffer, EN_ESPERA, MAX_TAM_BUFFER);
@@ -47,7 +47,7 @@ void Conexion_cliente::ejecutar(){
     }
     //std::cout << "Recibi (en el while 3) " << buffer << "\n";
   }
-  std::cout << "Recibi (fuera while) " << buffer << "\n";
+  //std::cout << "Recibi (fuera while) " << buffer << "\n";
   (*skt).shutdown(SHUT_RDWR);
   fin = true;
   std::cout << "termine \n";
