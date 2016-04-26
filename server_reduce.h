@@ -11,14 +11,14 @@
 
 class Reduce : public Hilo{
   private:
-    std::priority_queue<Registro> temperaturas;
-    std::vector<Registro> maximos;
+    std::priority_queue<int> temperaturas;
+    std::vector<int> maximos;
   public:
     Reduce();
     ~Reduce();
-    void agregar_registro(Registro registro);
+    void agregar_registro(Registro& registro);
     void ejecutar();
-    std::vector<Registro> devolver_maximos();
+    std::vector<int> devolver_maximos();
 };
 
 #endif //REDUCE_H

@@ -38,6 +38,6 @@ int main(int argc, char *argv[]){
   }
   procesador.enviar_fin(*cliente);
 
-  delete cliente;
+  //delete cliente;
   return 0;
 }
