@@ -1,7 +1,8 @@
 #ifndef PROCESADOR_SERVIDOR_H
 #define PROCESADOR_SERVIDOR_H
 
-#include "server_reduce.h"
+//#include "server_reduce.h"
+#include "server_almacenamiento_reducers.h"
 
 #include <vector>
 #include <map>
@@ -12,7 +13,7 @@ class Conexion_cliente;
 class Procesador_servidor{
   private:
     std::vector<Conexion_cliente*> clientes;
-    std::map<int, Reduce*> hilos_reduce;
+    Almacenamiento_reducers reducers;
 
   public:
     Procesador_servidor();

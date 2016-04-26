@@ -58,7 +58,7 @@ int main(int argc, char *argv[]){
   (*aceptador).terminar();
   (*aceptador).join();
   (*server).join();
-  //(*server).imprimir_resultados();
+  (*server).imprimir_resultados();
 
   //std::cout << "joinie \n";
 

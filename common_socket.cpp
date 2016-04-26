@@ -104,14 +104,14 @@ size_t tam_fin){
     tam_actual += tam_rcv;
     //std::cout << "Recibido " << buffer << "\n";
     if (buffer[tam_actual-1] == '\n'){
-      std::cout << "Buffer(rcv): " << buffer << "\n";
+      //std::cout << "Buffer(rcv): " << buffer << "\n";
       buffer[tam_actual-1] = '\0';
-      std::cout << "tam: " << tam_actual << "\n";
+      //std::cout << "tam: " << tam_actual << "\n";
       return tam_actual;
     }
   }
   buffer[tam_actual-1] = '\0';
-  std::cout << "tam: " << tam_actual << "\n";
+  //std::cout << "tam: " << tam_actual << "\n";
   return tam_actual;
 }
 
