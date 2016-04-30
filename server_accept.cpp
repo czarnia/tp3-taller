@@ -29,7 +29,7 @@ void Accept::terminar(){
 void Accept::ejecutar(){
   while (!fin){
     int nuevo_skt = (*skt).accept(NULL);
-    if(nuevo_skt < 0 && fin){
+    if (nuevo_skt < 0 && fin){
       return;
     }
     Socket* aceptado = new Socket(NULL, NULL, nuevo_skt);

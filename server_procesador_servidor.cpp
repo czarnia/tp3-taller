@@ -59,11 +59,11 @@ void Procesador_servidor::join(){
 }
 
 void Procesador_servidor::imprimir_resultados(){
-  std::map<int,Reduce*> hilos_reduce = (*reducers).devolver_hilos();
+  std::vector<Reduce*> hilos_reduce = (*reducers).devolver_hilos();
   Salida_maximos salida = Salida_maximos();
-  std::map<int,Reduce*>::iterator i;
-  for (i = hilos_reduce.begin(); i != hilos_reduce.end(); i++){
-    std::vector<Registro> maximos_dia = (*(i->second)).devolver_maximos();
+  //std::map<int,Reduce*>::iterator i;
+  for (size_t i = 0; i < hilos_reduce.size(); i++){
+    std::vector<Registro> maximos_dia = (*hilos_reduce[i]).devolver_maximos();
     std::cout << salida.to_string(maximos_dia);
   }
 }

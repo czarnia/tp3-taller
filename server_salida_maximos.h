@@ -8,7 +8,6 @@
 class Salida_maximos{
   public:
     std::string to_string(std::vector<Registro> maximos);
-
 };
 
 #endif //SALIDA_MAXIMOS_H

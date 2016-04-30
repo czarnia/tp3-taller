@@ -29,7 +29,7 @@ Conexion_cliente::~Conexion_cliente(){
 
 void Conexion_cliente::ejecutar(){
   char buffer[MAX_TAM_BUFFER];
-  if((*skt).receive(buffer, MAX_TAM_BUFFER, FIN_BUFFER, TAM_FIN) < 0){
+  if ((*skt).receive(buffer, MAX_TAM_BUFFER, FIN_BUFFER, TAM_FIN) < 0){
       std::cout << "-1 al recibir \n";
   }
   while (strcmp(buffer, FIN_ENTRADA) != 0){
@@ -37,7 +37,7 @@ void Conexion_cliente::ejecutar(){
       (*server).agregar_temperatura(buffer);
     }
     strncpy(buffer, EN_ESPERA, MAX_TAM_BUFFER);
-    if((*skt).receive(buffer, MAX_TAM_BUFFER, FIN_BUFFER, TAM_FIN) < 0){
+    if ((*skt).receive(buffer, MAX_TAM_BUFFER, FIN_BUFFER, TAM_FIN) < 0){
         std::cout << "-1 al recibir \n";
     }
   }

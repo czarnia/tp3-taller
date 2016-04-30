@@ -24,6 +24,9 @@ Socket::Socket(char* puerto, char* ip, int sktc){
   }else{
     struct addrinfo* addr = iniciar_addrinfo(ip, puerto);
     this->skt = socket(addr->ai_family, addr->ai_socktype, addr->ai_protocol);
+    if (this->skt < 0){
+      std::cout << "no tengo socket!! \n";
+    }
     freeaddrinfo(addr);
   }
 }

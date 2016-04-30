@@ -20,7 +20,7 @@ void Reduce::ejecutar(){
   Registro valor1 = temperaturas.top();
   temperaturas.pop();
   maximos.push_back(valor1);
-  while(!temperaturas.empty()){
+  while (!temperaturas.empty()){
     Registro valor2 = temperaturas.top();
     temperaturas.pop();
     if (valor1 == valor2){
