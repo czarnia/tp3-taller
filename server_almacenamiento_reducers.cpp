@@ -72,15 +72,23 @@ std::vector<Reduce*> Almacenamiento_reducers::devolver_hilos(){
 
 void Almacenamiento_reducers::ejecutar_reduce(){
   int i = 0;
+  std::cout << "ejecuto reduce \n";
   while (i < CANT_DIAS){
+    std::cout << "estoy en el while mi amigo \n";
     for (int j = i; j < i + 4; j++){
-      (*hilos_reduce[j]).start();
+      //if (j < CANT_DIAS){
+        std::cout << "holu \n";
+        (*hilos_reduce[j]).start();
+      //}
     }
     for (int j = i; j < i + 4; j++){
-      (*hilos_reduce[j]).join();
+      //if (j < CANT_DIAS){
+        std::cout << "chau \n";
+        (*hilos_reduce[j]).join();
+      //}
     }
     i+=4;
-    std::cout << "estoy en el while mi amigo \n";
+
   }
 
 }
