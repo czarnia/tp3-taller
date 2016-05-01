@@ -25,13 +25,13 @@ std::vector<int> obtener_claves(std::map<int,Reduce*> hash){
 //-------------------------------------//
 */
 Almacenamiento_reducers::Almacenamiento_reducers(){
-  std::cout << "creo un almacenamiento \n";
-  std::vector<Reduce*> hilos_reduce;
+  //std::cout << "creo un almacenamiento \n";
+  //std::vector<Reduce*> hilos_reduce;
   for (size_t i = 0; i < CANT_DIAS; i++){
     Reduce* nuevo_hilo = new Reduce();
     hilos_reduce.push_back(nuevo_hilo);
   }
-  std::cout << "tam hilos luego de ser creados: " << hilos_reduce.size() << "\n";
+  //std::cout << "tam hilos luego de ser creados: " << hilos_reduce.size() << "\n";
 }
 
 Almacenamiento_reducers::~Almacenamiento_reducers(){
@@ -52,12 +52,13 @@ void Almacenamiento_reducers::agregar_temperatura(char* cadena){
   int temp = atoi(temperatura.c_str());
   int d = atoi(dia.c_str());
 
-  std::cout << "estoy agregando una temperatura \n";
+  //std::cout << "estoy agregando una temperatura \n";
+  //std::cout << "tam hilos: " << hilos_reduce.size() << "dia a agregar: " << d << "\n";
 
   Registro clave_valor = Registro(ciudad, temp, d);
 
   Lock candado(proteccion);
-  std::cout << "tam hilos: " << hilos_reduce.size() << "dia a agregar: " << d << "\n";
+
   /*if (hilos_reduce[d-1] == NULL){
     Reduce* nuevo_hilo = new Reduce();
     hilos_reduce.insert(hilos_reduce.begin()+(d-1), nuevo_hilo);
