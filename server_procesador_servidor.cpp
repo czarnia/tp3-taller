@@ -29,11 +29,13 @@ Procesador_servidor::~Procesador_servidor(){
 }
 
 void Procesador_servidor::agregar_cliente(Conexion_cliente* cliente){
+  std::cout << "agrego un cliente \n";
   (*cliente).start();
   clientes.push_back(cliente);
 }
 
 void Procesador_servidor::agregar_temperatura(char* cadena){
+  std::cout << "agrego una temperatura \n";
   (*reducers).agregar_temperatura(cadena);
 }
 

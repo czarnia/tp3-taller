@@ -18,7 +18,7 @@
 #include <sstream>
 #include <iostream>
 
-Socket::Socket(char* puerto, char* ip, int sktc){
+Socket::Socket(char* ip, char* puerto, int sktc){
   if (sktc > 0){
     this->skt = sktc;
   }else{

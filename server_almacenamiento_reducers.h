@@ -4,7 +4,7 @@
 #include "server_mutex.h"
 #include "server_reduce.h"
 
-#include <map>
+#include <vector>
 
 class Almacenamiento_reducers{
   private:
