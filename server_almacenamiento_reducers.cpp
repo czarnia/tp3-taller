@@ -37,9 +37,9 @@ Almacenamiento_reducers::Almacenamiento_reducers(){
 Almacenamiento_reducers::~Almacenamiento_reducers(){
   //std::vector<int> claves_reduce = obtener_claves(hilos_reduce);
   std::cout << "estoy borrando mis reducers !! \n";
-  for (size_t i = 0; i < CANT_DIAS; i++){
-    Reduce* r = hilos_reduce[i];
-    hilos_reduce.erase(hilos_reduce.begin()+i);
+  for (size_t i = 0 ; i < CANT_DIAS; i++){
+    Reduce* r = hilos_reduce.back();
+    hilos_reduce.pop_back();
     delete r;
   }
 }
@@ -75,13 +75,13 @@ void Almacenamiento_reducers::ejecutar_reduce(){
   std::cout << "ejecuto reduce \n";
   while (i < CANT_DIAS){
     std::cout << "estoy en el while mi amigo \n";
-    for (int j = i; j < i + 4; j++){
+    for (int j = i; (j < i + 4) && (j < CANT_DIAS); j++){
       //if (j < CANT_DIAS){
         std::cout << "holu \n";
         (*hilos_reduce[j]).start();
       //}
     }
-    for (int j = i; j < i + 4; j++){
+    for (int j = i; (j < i + 4) && (j < CANT_DIAS); j++){
       //if (j < CANT_DIAS){
         std::cout << "chau \n";
         (*hilos_reduce[j]).join();
