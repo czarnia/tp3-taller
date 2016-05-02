@@ -11,9 +11,13 @@ class Conexion_cliente : public Hilo{
     bool fin;
     Procesador_servidor* server;
   public:
+    //Dado un socket y un procesador_servidor, crea una conexion_cliente.
     Conexion_cliente(Socket* conexion, Procesador_servidor* srv);
+    //Destruye una conexion_cliente.
     ~Conexion_cliente();
+    //Recibe datos de un socket hasta encontrarse con una señal de fin.
     void ejecutar();
+    //Pregunta si se termino de recibir.
     bool termino();
 };
 

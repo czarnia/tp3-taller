@@ -7,6 +7,7 @@
 
 class Salida_maximos{
   public:
+    //Da una representacion de string a un vector de registros.
     std::string to_string(std::vector<Registro> maximos);
 };
 

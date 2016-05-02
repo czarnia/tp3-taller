@@ -6,9 +6,10 @@
 class Lock {
   private:
     Mutex &m;
-
   public:
+    //Crea un lock.
     explicit Lock(Mutex &m);
+    //Destruye un lock.
     ~Lock();
 };
 

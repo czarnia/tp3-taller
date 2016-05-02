@@ -12,10 +12,14 @@ class Hilo {
         }
 
     public:
-        virtual ~Hilo() {}
-        virtual void ejecutar() = 0;
-        void start();
-        void join();
+      //Destruye un hilo.
+      virtual ~Hilo() {}
+      //Define la funcion que ejecutara un hilo.
+      virtual void ejecutar() = 0;
+      //Lanza al hilo.
+      void start();
+      //Hace un join al hilo.
+      void join();
 };
 
 #endif //HILO_H

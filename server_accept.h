@@ -13,9 +13,13 @@ class Accept: public Hilo{
     bool fin;
     Procesador_servidor* server;
   public:
+    //Dado un socket y un procesador_servidor, crea un accept.
     Accept(Socket* conexion_server, Procesador_servidor* svr);
+    //Destruye un Accept.
     ~Accept();
+    //Le notifica al accept que debe dejar de aceptar conexiones entrantes.
     void terminar();
+    //Recibe conexiones entrantes.
     virtual void ejecutar();
 };
 
