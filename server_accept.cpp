@@ -8,8 +8,6 @@
 #include <iostream>
 #include <exception>
 
-//#define CONEXIONES 5
-
 Accept::Accept(Socket* conexion_server, Procesador_servidor* srv)
 :skt(conexion_server){
   fin = false;

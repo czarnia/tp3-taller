@@ -29,13 +29,11 @@ Procesador_servidor::~Procesador_servidor(){
 }
 
 void Procesador_servidor::agregar_cliente(Conexion_cliente* cliente){
-  //std::cout << "agrego un cliente \n";
   (*cliente).start();
   clientes.push_back(cliente);
 }
 
 void Procesador_servidor::agregar_temperatura(char* cadena){
-  //std::cout << "agrego una temperatura \n";
   (*reducers).agregar_temperatura(cadena);
 }
 
@@ -63,7 +61,6 @@ void Procesador_servidor::join(){
 void Procesador_servidor::imprimir_resultados(){
   std::vector<Reduce*> hilos_reduce = (*reducers).devolver_hilos();
   Salida_maximos salida = Salida_maximos();
-  //std::map<int,Reduce*>::iterator i;
   for (size_t i = 0; i < hilos_reduce.size(); i++){
     std::vector<Registro> maximos_dia = (*hilos_reduce[i]).devolver_maximos();
     std::cout << salida.to_string(maximos_dia);

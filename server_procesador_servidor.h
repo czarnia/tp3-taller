@@ -1,7 +1,6 @@
 #ifndef PROCESADOR_SERVIDOR_H
 #define PROCESADOR_SERVIDOR_H
 
-//#include "server_reduce.h"
 #include "server_almacenamiento_reducers.h"
 
 #include <vector>
