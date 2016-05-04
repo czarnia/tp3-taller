@@ -8,10 +8,16 @@
 #include <iostream>
 #include <exception>
 
-Accept::Accept(Socket* conexion_server, Procesador_servidor* srv)
-:skt(conexion_server){
+
+#define MAX_CONEXIONES 4
+
+Accept::Accept(char* puerto, Procesador_servidor* srv){
   fin = false;
   server = srv;
+  skt = new Socket(NULL, puerto);
+
+  (*skt).bind(NULL, puerto);
+  (*skt).listen(MAX_CONEXIONES);
 }
 
 Accept::~Accept(){
