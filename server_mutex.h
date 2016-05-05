@@ -15,6 +15,9 @@ class Mutex {
     void lock();
     //Hace un unlock (determina el fin de la zona protegida de race condition).
     void unlock();
+  private:
+    Mutex(const Mutex&);
+    Mutex& operator=(const Mutex&);
 };
 
 #endif //MUTEX_H

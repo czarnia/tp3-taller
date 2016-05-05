@@ -20,6 +20,9 @@ class Hilo {
       void start();
       //Hace un join al hilo.
       void join();
+    private:
+      Hilo(const Hilo&);
+      Hilo& operator=(const Hilo&);
 };
 
 #endif //HILO_H

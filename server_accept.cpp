@@ -32,11 +32,10 @@ void Accept::terminar(){
 
 void Accept::ejecutar(){
   while (!fin){
-    int nuevo_skt = (*skt).accept(NULL);
-    if (nuevo_skt < 0 && fin){
+    Socket* aceptado = (*skt).accept(NULL);
+    if (aceptado == NULL && fin){
       return;
     }
-    Socket* aceptado = new Socket(NULL, NULL, nuevo_skt);
     Conexion_cliente* nueva_conexion = new Conexion_cliente(aceptado, server);
     (*server).agregar_cliente(nueva_conexion);
   }

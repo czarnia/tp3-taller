@@ -11,6 +11,9 @@ class Lock {
     explicit Lock(Mutex &m);
     //Destruye un lock.
     ~Lock();
+  private:
+    Lock(const Lock&);
+    Lock& operator=(const Lock&);
 };
 
 #endif //LOCK_H
