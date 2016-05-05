@@ -17,10 +17,10 @@ int main(int argc, char *argv[]){
   Procesador_cliente procesador = Procesador_cliente();
   char* id = argv[1];
   char* puerto = argv[2];
-  Socket* cliente = new Socket(NULL, puerto);
+  Socket cliente = Socket(NULL, puerto);
 
   //Me conecto al servidor
-  if ((*cliente).conect(id, puerto) < 0){
+  if (cliente.conect(id, puerto) < 0){
     std::cout << "Problema en conect \n";
     printf("%s \n", strerror(errno));
     return 0;
@@ -31,11 +31,11 @@ int main(int argc, char *argv[]){
   while (std::getline(std::cin,linea_actual) && linea_actual != ""){
     std::cout << linea_actual << "\n";
     Registro clave_valor = procesador.devolver_clave_valor(linea_actual);
-    procesador.enviar_clave_valor(clave_valor, *cliente);
+    procesador.enviar_clave_valor(clave_valor, cliente);
   }
-  procesador.enviar_fin(*cliente);
+  procesador.enviar_fin(cliente);
 
-  (*cliente).shutdown(SHUT_RDWR);
-  delete cliente;
+  cliente.shutdown(SHUT_RDWR);
+  //delete cliente;
   return 0;
 }

@@ -18,17 +18,13 @@
 #include <sstream>
 #include <iostream>
 
-Socket::Socket(char* ip, char* puerto, int sktc){
-  if (sktc > 0){
-    this->skt = sktc;
-  }else{
-    struct addrinfo* addr = iniciar_addrinfo(ip, puerto);
-    this->skt = socket(addr->ai_family, addr->ai_socktype, addr->ai_protocol);
-    if (this->skt < 0){
-      std::cout << "no tengo socket!! \n";
-    }
-    freeaddrinfo(addr);
+Socket::Socket(char* ip, char* puerto){
+  struct addrinfo* addr = iniciar_addrinfo(ip, puerto);
+  this->skt = socket(addr->ai_family, addr->ai_socktype, addr->ai_protocol);
+  if (this->skt < 0){
+    std::cout << "no tengo socket!! \n";
   }
+  freeaddrinfo(addr);
 }
 
 Socket::~Socket(){
@@ -53,10 +49,14 @@ int Socket::bind(char* ip, char* puerto){
   return b;
 }
 
-int Socket::accept(struct sockaddr* dir_cliente){
+Socket* Socket::accept(struct sockaddr* dir_cliente){
   socklen_t tam_addr = sizeof(dir_cliente);
   int nuevo_socket = ::accept(this->skt, dir_cliente, &tam_addr);
-  return nuevo_socket;
+  if (nuevo_socket < 0){
+    return NULL;
+  }
+  Socket* nuevo = new Socket(nuevo_socket);
+  return nuevo;
 }
 
 int Socket::conect(char* ip, char* puerto){
@@ -130,4 +130,8 @@ struct addrinfo* Socket::iniciar_addrinfo(char* ip, char* puerto){
   getaddrinfo(ip, puerto, &hints, &server);
 
   return server;
+}
+
+Socket::Socket(int aceptado){
+  this->skt = aceptado;
 }

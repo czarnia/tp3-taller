@@ -16,8 +16,6 @@ class Reduce : public Hilo{
   public:
     //Crea un reduce.
     Reduce();
-    //Destruye un reduce.
-    ~Reduce();
     //Agrega un registro a los datos del reduce.
     void agregar_registro(Registro& registro);
     //Ejecuta al reduce.

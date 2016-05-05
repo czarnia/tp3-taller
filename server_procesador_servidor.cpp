@@ -14,7 +14,6 @@
 
 
 Procesador_servidor::Procesador_servidor(){
-  std::vector<Conexion_cliente*> clientes;
   reducers = new Almacenamiento_reducers();
 }
 
@@ -37,20 +36,7 @@ void Procesador_servidor::agregar_temperatura(char* cadena){
   (*reducers).agregar_temperatura(cadena);
 }
 
-bool Procesador_servidor::clientes_terminaron(){
-  for (size_t i = 0; i < clientes.size(); i++){
-    if (!(*clientes[i]).termino()){
-      return false;
-    }
-  }
-  return true;
-}
-
 void Procesador_servidor::join(){
-  bool terminaron = false;
-  while (!terminaron){
-    terminaron = clientes_terminaron();
-  }
   for (size_t i = 0; i < clientes.size(); i++){
     (*clientes[i]).join();
   }

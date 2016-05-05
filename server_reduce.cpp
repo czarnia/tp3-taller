@@ -10,8 +10,6 @@ Reduce::Reduce(){
   std::vector<Registro> maximos;
 }
 
-Reduce::~Reduce(){}
-
 void Reduce::agregar_registro(Registro& valor){
   temperaturas.push(valor);
 }

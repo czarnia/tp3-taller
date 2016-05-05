@@ -27,10 +27,6 @@ class Procesador_servidor{
     void join();
     //Imprime los resultados de los reducers, habiendolos ejecutado antes.
     void imprimir_resultados();
-  private:
-    //Pregunta si todas las conexiones_clientes terminaron de recibir informa-
-    //cion.
-    bool clientes_terminaron();
 };
 
 #endif // PROCESADOR_SERVIDOR_H
